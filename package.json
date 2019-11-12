@@ -1,0 +1,41 @@
+{
+  "name": "featuretoggle",
+  "version": "1.0.0",
+  "description": "MYOB feature toggle",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vdkhiem/featuretoggle.git"
+  },
+  "keywords": [
+    "MYOB",
+    "feature",
+    "toggle"
+  ],
+  "author": "Khiem Vo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vdkhiem/featuretoggle/issues"
+  },
+  "homepage": "https://github.com/vdkhiem/featuretoggle#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "express-validator": "^6.2.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.10",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^1.19.4"
+  }
+}
