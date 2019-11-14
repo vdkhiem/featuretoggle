@@ -18,6 +18,40 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @route   GET api/features/:id
+// @desc    GET feature by id
+// @access  Private
+router.get("/:id", async (req, res) => {
+  try {
+    const foundFeature = await Feature.findById(req.params.id);
+    if (!foundFeature) {
+      return res.status(404).json({ msg: "Feature not found" });
+    }
+
+    return res.json(foundFeature);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).send("Server error");
+  }
+});
+
+// @route   GET api/enablefeature/:code
+// @desc    Enable/disable a feature
+// @access  Private
+router.get("/enablefeature/:code", async (req, res) => {
+  try {
+    const foundFeature = await Feature.findOne({ code: req.params.code });
+    if (!foundFeature) {
+      return res.status(404).json({ msg: "Feature not found" });
+    }
+
+    return res.json(foundFeature);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).send("Server error");
+  }
+});
+
 // @route   POST api/features
 // @desc    Add/Update a feature
 // @access  Private

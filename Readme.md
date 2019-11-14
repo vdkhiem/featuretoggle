@@ -10,6 +10,7 @@
 
 - Bracket Pair Colorizer
 - ES7 React/Redux/GraphQL/React-Native snippet (shortcut for snippets)
+  - rafcp: create a function component snippet
 - Prettier - Code Formatter
 
 ### Server (Express)

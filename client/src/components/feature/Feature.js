@@ -1,25 +1,30 @@
-import React, { useEffect, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { getFeatures } from '../../actions/feature';
-import Spinner from '../layout/Spinner';
-import ProfileItem from './FeatureItem';
-// import PropTypes from 'prop-types';
+import React, { useEffect, Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getFeatures } from "../../actions/feature";
+import Spinner from "../layout/Spinner";
+import ProfileItem from "./FeatureItem";
+import PropTypes from "prop-types";
 
-const Feature = props => {
+const Feature = ({ getFeatures, feature }) => {
+  // props destructure into {getFeatures, feature}
   useEffect(() => {
-    console.log('useEffect');
-    props.getFeatures();
-  }, []); // use [] so it will trigger only once
+    console.log("useEffect");
+    getFeatures();
+  }, [getFeatures]); // use [] so it will trigger only once
 
   return (
     <Fragment>
-      {props.feature.loading ? (
+      {feature.loading ? (
         <Spinner />
       ) : (
         <Fragment>
+          <Link to={`/createfeature`} className="btn btn-primary">
+            Create Feature
+          </Link>
           <div className="profiles"></div>
-          {props.feature.features.length > 0 ? (
-            props.feature.features.map(feature => {
+          {feature.features.length > 0 ? (
+            feature.features.map(feature => {
               return <ProfileItem key={feature._id} feature={feature} />;
             })
           ) : (
@@ -31,7 +36,9 @@ const Feature = props => {
   );
 };
 
-// Profile.propTypes = {};
+Feature.propTypes = {
+  getFeatures: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => {
   return {
@@ -39,7 +46,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getFeatures }
-)(Feature);
+export default connect(mapStateToProps, { getFeatures })(Feature);

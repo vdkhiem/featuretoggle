@@ -1,4 +1,8 @@
-import { GET_FEATURES, CLEAR_FEATURE } from '../actions/actionTypes';
+import {
+  GET_FEATURES,
+  GET_FEATURE,
+  CLEAR_FEATURE
+} from "../actions/actionTypes";
 
 const initalState = {
   feature: null,
@@ -9,6 +13,12 @@ const initalState = {
 
 export default function(state = initalState, action) {
   switch (action.type) {
+    case GET_FEATURE:
+      return {
+        ...state,
+        feature: action.payload,
+        loading: false
+      };
     case GET_FEATURES:
       return {
         ...state,
