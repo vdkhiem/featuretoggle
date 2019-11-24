@@ -10,7 +10,7 @@ const Feature = require("../../models/Feature");
 // @access  Private
 router.get("/", async (req, res) => {
   try {
-    const features = await Feature.find();
+    const features = await Feature.find().sort({ createdate: -1 });
     return res.json(features);
   } catch (error) {
     console.log(error.message);
@@ -58,8 +58,12 @@ router.get("/enablefeature/:code", async (req, res) => {
 router.post(
   "/",
   [
-    check("code", "Code is required").exists(),
-    check("name", "Name is required").exists()
+    check("code", "Code is required")
+      .not()
+      .isEmpty(),
+    check("name", "Name is required")
+      .not()
+      .isEmpty()
   ],
   async (req, res) => {
     try {

@@ -1,11 +1,11 @@
 import React, { useState, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { createFeature } from "../../actions/feature";
 import { connect } from "react-redux";
 
 // import PropTypes from "prop-types";
 
-const CreateFeature = ({ createFeature }) => {
+const CreateFeature = ({ createFeature, history }) => {
   const [formData, setFormData] = useState({
     code: "",
     name: "",
@@ -25,7 +25,7 @@ const CreateFeature = ({ createFeature }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    createFeature(formData);
+    createFeature(formData, history, false);
   };
 
   return (
@@ -79,4 +79,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { createFeature })(CreateFeature);
+export default connect(mapStateToProps, { createFeature })(
+  withRouter(CreateFeature)
+); // withRouter allows to use 'history'
