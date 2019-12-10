@@ -14,7 +14,7 @@ import store from "./store";
 
 import Alert from "./components/layout/Alert";
 import Feature from "./components/feature/Feature";
-import UpdateFeature from "./components/feature/UpdateFeature";
+import EditFeature from "./components/feature/EditFeature";
 import CreateFeature from "./components/feature/CreateFeature";
 
 const App = () => (
@@ -29,7 +29,7 @@ const App = () => (
             <Route exact path="/Admin" component={Admin} />
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Feature" component={Feature} />
-            <Route exact path="/Feature/:id" component={UpdateFeature} />
+            <Route exact path="/Feature/:id" component={EditFeature} />
             <Route exact path="/CreateFeature" component={CreateFeature} />
           </Switch>
         </section>

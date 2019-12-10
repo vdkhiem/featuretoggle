@@ -9,7 +9,6 @@ import PropTypes from "prop-types";
 const Feature = ({ getFeatures, feature }) => {
   // props destructure into {getFeatures, feature}
   useEffect(() => {
-    console.log("useEffect");
     getFeatures();
   }, [getFeatures]); // use [] so it will trigger only once
 
